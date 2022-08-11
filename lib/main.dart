@@ -6,33 +6,51 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'First app',
-      theme: ThemeData(
-        primarySwatch: Colors.blue
-      ),
-      home: MyHomePage(),
+      title: 'COQOA',
+      home: Grade(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class Grade extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.amber[700],
+      
       appBar: AppBar(
-        title: Text('First app'),
+        title: Text('COQOA'),
+        backgroundColor: Colors.amber[800],
+        centerTitle: true,
+        elevation: 0.0,
       ),
-      body: Center(
+
+      body: Padding(
+        padding: EdgeInsets.fromLTRB(30.0, 40.0, 0.0, 0.0),
         child: Column(
-          children: <Widget>[
-            Text('H'),
-            Text('He'),
-            Text('Hel'),
-            Text('Hell'),
-            Text('Hello')
+          crossAxisAlignment: CrossAxisAlignment.start,
+
+          children: [
+            Text('NAME', 
+              style: TextStyle(
+                color: Colors.white,
+                letterSpacing: 2.0,
+              ),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            Text('COQOA',
+              style: TextStyle(
+                color: Colors.white,
+                letterSpacing: 2.0,
+                fontSize: 28.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ],
         ),
-      ),
+      )
     );
   }
 }
