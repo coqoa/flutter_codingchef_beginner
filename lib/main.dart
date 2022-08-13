@@ -6,136 +6,44 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'COQOA',
-      home: Grade(),
+      title : 'AppBar',
+      theme: ThemeData(
+        primarySwatch: Colors.red
+      ),
+      home: MyPage(),
     );
   }
 }
 
-class Grade extends StatelessWidget {
+class MyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber[800],
-      
       appBar: AppBar(
-        title: Text('COQOA'),
-        backgroundColor: Colors.amber[700],
+        title: Text('AppBar Icon Menu'),
         centerTitle: true,
         elevation: 0.0,
-      ),
-
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(30.0, 40.0, 0.0, 0.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage("assets/Cow.png"),
-                radius: 60.0,
-                backgroundColor: Colors.white,
-              ),
-            ),
-            Divider(
-              height: 60.0, // 위 아래 사이의 간격을 합친 값 (위로부터 30픽셀, 아래로부터 30픽셀)
-              color: Colors.grey[850],
-              thickness: 0.5,
-              endIndent: 30.0,
-            ),
-            Text('NAME', 
-              style: TextStyle(
-                color: Colors.white,
-                letterSpacing: 2.0,
-              ),
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-            Text('COQOA',
-              style: TextStyle(
-                color: Colors.white,
-                letterSpacing: 2.0,
-                fontSize: 28.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-            Text('COQOA POWER LEVEL', 
-              style: TextStyle(
-                color: Colors.white,
-                letterSpacing: 2.0,
-              ),
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-            Text('14',
-              style: TextStyle(
-                color: Colors.white,
-                letterSpacing: 2.0,
-                fontSize: 28.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(
-              height: 30.0,
-            ),
-            Row(
-              children: [
-                Icon(Icons.check_circle_outline),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Text('using lightsaber',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    letterSpacing: 1.0
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Icon(Icons.check_circle_outline),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Text('face hero tattoo',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    letterSpacing: 1.0
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Icon(Icons.check_circle_outline),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Text('fire flames',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    letterSpacing: 1.0
-                  ),
-                ),
-              ],
-            ),
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/Whale.png'),
-                radius: 40.0,
-                backgroundColor: Colors.amber[800],
-              ),
-            ),
-          ],
+        leading: IconButton(
+          icon: Icon(Icons.menu), 
+          onPressed: () { 
+            print('메뉴 클릭 했음'); 
+          },
         ),
-      )
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart), 
+            onPressed: () { 
+              print('쇼핑카트 클릭 했음'); 
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.search), 
+            onPressed: () { 
+              print('검색 클릭 했음'); 
+            },
+          ),
+        ],
+      ),
     );
   }
 }
