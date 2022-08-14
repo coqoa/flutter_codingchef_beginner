@@ -61,6 +61,10 @@ flutter:
   assets:
     - assets/Heart.png
     - assets/Star.png
+    - assets/COQOA.jpeg
+    - assets/JAVADOT.png
+    - assets/POMOTODO.png
+    - assets/TAPTAP.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
