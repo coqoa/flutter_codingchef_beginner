@@ -11,7 +11,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(title: 'Dice game', home: LogIn());
+    // return const MaterialApp(title: 'Dice game', home: LogIn());
+    return const MaterialApp(title: 'Dice game', home: Dice());
   }
 }
 
@@ -40,76 +41,81 @@ class _LogInState extends State<LogIn> {
         actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
       ),
       body: Builder(builder: (context) {
-        return SingleChildScrollView(
-          //
-          child: Column(
-            children: [
-              Padding(padding: EdgeInsets.only(top: 50.0)),
-              Center(
-                child: Image(
-                  image: AssetImage('assets/COQOA.jpeg'),
-                  width: 170.0,
-                  height: 190.0,
+        return GestureDetector(
+          // 키보드 외부 탭하면 포커스해제
+          onTap:(){FocusScope.of(context).unfocus();},
+          child: SingleChildScrollView(
+            //
+            child: Column(
+              children: [
+                Padding(padding: EdgeInsets.only(top: 50.0)),
+                Center(
+                  child: Image(
+                    image: AssetImage('assets/COQOA.jpeg'),
+                    width: 170.0,
+                    height: 190.0,
+                  ),
                 ),
-              ),
-              Form(
-                  child: Theme(
-                      data: ThemeData(
-                          primaryColor: Colors.teal,
-                          inputDecorationTheme: InputDecorationTheme(
-                              labelStyle: TextStyle(
-                                  color: Colors.teal, fontSize: 15.0))),
-                      child: Container(
-                        padding: EdgeInsets.all(40.0),
-                        child: Column(
-                          children: [
-                            TextField(
-                              decoration:
-                                  InputDecoration(labelText: 'Enter ID'),
-                              keyboardType: TextInputType.emailAddress,
-                              controller: controller,
-                            ),
-                            TextField(
-                              decoration:
-                                  InputDecoration(labelText: 'Enter Password'),
-                              keyboardType: TextInputType.text,
-                              obscureText: true,
-                              controller: controller2,
-                            ),
-                            SizedBox(
-                              height: 40.0,
-                            ),
-                            ButtonTheme(
-                                minWidth: 100.0,
-                                height: 50.0,
-                                child: RaisedButton(
-                                    color: Colors.orangeAccent,
-                                    child: Icon(
-                                      Icons.arrow_forward,
-                                      color: Colors.white,
-                                      size: 35.0,
-                                    ),
-                                    onPressed: () {
-                                      if (controller.text == 'admin' &&
-                                          controller2.text == '1234') {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => Dice()));
-                                      } else if (controller.text == 'admin' &&
-                                          controller2.text != '1234') {
-                                            showSnackBar(context);
-                                      } else if (controller.text != 'admin' &&
-                                          controller2.text == '1234') {
-                                            showSnackBar2(context);
-                                      } else {
-                                        showSnackBar3(context);
-                                      }
-                                    }))
-                          ],
-                        ),
-                      ))),
-            ],
+                Form(
+                    child: Theme(
+                        data: ThemeData(
+                            primaryColor: Colors.teal,
+                            inputDecorationTheme: InputDecorationTheme(
+                                labelStyle: TextStyle(
+                                    color: Colors.teal, fontSize: 15.0))),
+                        child: Container(
+                          padding: EdgeInsets.all(40.0),
+                          child: Column(
+                            children: [
+                              TextField(
+                                decoration:
+                                    InputDecoration(labelText: 'Enter ID'),
+                                keyboardType: TextInputType.emailAddress,
+                                controller: controller,
+                                autofocus: true,
+                              ),
+                              TextField(
+                                decoration:
+                                    InputDecoration(labelText: 'Enter Password'),
+                                keyboardType: TextInputType.text,
+                                obscureText: true,
+                                controller: controller2,
+                              ),
+                              SizedBox(
+                                height: 40.0,
+                              ),
+                              ButtonTheme(
+                                  minWidth: 100.0,
+                                  height: 50.0,
+                                  child: RaisedButton(
+                                      color: Colors.orangeAccent,
+                                      child: Icon(
+                                        Icons.arrow_forward,
+                                        color: Colors.white,
+                                        size: 35.0,
+                                      ),
+                                      onPressed: () {
+                                        if (controller.text == 'admin' &&
+                                            controller2.text == '1234') {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => Dice()));
+                                        } else if (controller.text == 'admin' &&
+                                            controller2.text != '1234') {
+                                              showSnackBar(context);
+                                        } else if (controller.text != 'admin' &&
+                                            controller2.text == '1234') {
+                                              showSnackBar2(context);
+                                        } else {
+                                          showSnackBar3(context);
+                                        }
+                                      }))
+                            ],
+                          ),
+                        ))),
+              ],
+            ),
           ),
         );
       }),
