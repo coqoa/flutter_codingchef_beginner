@@ -142,7 +142,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                           children: [
                             Text(
                               // '$temp\u2103',
-                              'temp\u2103',
+                              '18\u2103',
                               style: GoogleFonts.lato(
                                   fontSize: 85.0,
                                   fontWeight: FontWeight.w300,
@@ -156,7 +156,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                 ),
                                 Text(
                                   // '$des',
-                                  'des',
+                                  'clear sky',
                                   style: GoogleFonts.lato(
                                     fontSize: 16.0,
                                     color: Colors.white,
@@ -191,11 +191,19 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               SizedBox(
                                 height: 10.0,
                               ),
+                              Image.asset('image/bad.png',width: 37, height: 35,), // 교체예정
                               // airIcon,
                               SizedBox(
                                 height: 10.0,
                               ),
                               // airState,
+                              Text( // 교체예정
+                                '매우 나쁨',
+                                style: GoogleFonts.lato(
+                                  fontSize: 14.0,
+                                  color: Colors.white,
+                                ),
+                              ),
                             ],
                           ),
                           Column(
@@ -212,7 +220,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               ),
                               Text(
                                 // '$dust1',
-                                'dust1',
+                                '174',
                                 style: GoogleFonts.lato(
                                   fontSize: 24.0,
                                   color: Colors.white,
@@ -245,7 +253,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               ),
                               Text(
                                 // '$dust2',
-                                'dust2',
+                                '84.03',
                                 style: GoogleFonts.lato(
                                   fontSize: 24.0,
                                   color: Colors.white,
