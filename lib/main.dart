@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_codingchef_beginner/screens/weather_screen.dart';
+import 'package:flutter_codingchef_beginner/screens/main_screen.dart';
 
 
 void main() {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'MyApp',
-      home: WeatherScreen(),
+      home: LoginSignupScreen(),
     );
   }
 }
