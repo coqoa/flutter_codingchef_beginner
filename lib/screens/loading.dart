@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:flutter_codingchef_beginner/data/my_location.dart';
+import 'package:flutter_codingchef_beginner/data/network.dart';
+
 
 class Loading extends StatefulWidget {
   const Loading({Key? key}) : super(key: key);
@@ -12,36 +12,28 @@ class Loading extends StatefulWidget {
 
 class _LoadingState extends State<Loading> {
 
+  double? latitude;
+  double? longitude;
   @override
   void initState() {
 
     super.initState();
     getLocation();
-    fetchData();
   }
   void getLocation() async{
-    try{
-      LocationPermission permission = await Geolocator.requestPermission();
-      Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-      print(position);
-    }catch(e){
-      print(e);
-    }
+    MyLocation myLocation = MyLocation();
+    await myLocation.getMyCurrentLocation();
+    latitude = myLocation.latitude;
+    longitude = myLocation.longitude;
+    print(latitude);
+    print(longitude);
+
+    Network network = Network('https://samples.openweathermap.org/data/2.5/weather?q=London&appid=b1b15e88fa797225412429c1c50c122a1');
+    var weatherData = await network.getJsonData();
+    print(weatherData);
+
   }
 
-  void fetchData() async{
-    http.Response response = await http.get(Uri.parse('https://samples.openweathermap.org/data/2.5/weather?q=London&appid=b1b15e88fa797225412429c1c50c122a1'));
-    
-    if(response.statusCode == 200){
-      String jsonData = response.body;
-      var myJson = jsonDecode(jsonData);
-      print(myJson['weather'][0]['description']);
-      //  light intensity drizzle
-    }else{
-      print(response.statusCode);
-
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
